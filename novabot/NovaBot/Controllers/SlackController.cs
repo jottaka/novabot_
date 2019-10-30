@@ -15,14 +15,13 @@ namespace NovaBot.Controllers
     public class SlackController : ControllerBase
     {
         private readonly ILogger<SlackController> _logger;
-        private readonly IUserRepository _userRepository;
-
+        private readonly ISlackRepository _slackRepository;
         public SlackController(
-            ILogger<SlackController> logger,
-            IUserRepository userRepository)
+            ISlackRepository slackRepository,
+            ILogger<SlackController> logger)
         {
+            _slackRepository = slackRepository;
             _logger = logger;
-            _userRepository = userRepository;
         }
 
         [HttpPost]
@@ -30,21 +29,7 @@ namespace NovaBot.Controllers
         {
             try
             {
-                IActionResult response;
-                switch (request.type)
-                {
-                    case "url_verification":
-                        response = Ok(request.challenge);
-                            break;
-                    case "message":
-                        response = Ok();
-                        break;
-                    default:
-                        response = Ok();
-                        break;
-                }
-
-                return response;
+                return Ok( _slackRepository.ProcessRequest(request));
             }
             catch (Exception e)
             {

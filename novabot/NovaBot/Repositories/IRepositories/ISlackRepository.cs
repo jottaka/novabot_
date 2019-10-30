@@ -10,6 +10,7 @@ namespace NovaBot.Repositories.interfaces
     public interface ISlackRepository
     {
         Task<string> AddQuoteAsync(string message);
+        Task<string> ProcessRequest(SlackEventRequestModel request);
     }
 
 }
