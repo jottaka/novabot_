@@ -1,0 +1,14 @@
+{
+  "ConnectionStrings": {
+   "DefaultConnectionString": "Server=(localdb)\\mssqllocaldb;Database=novabottst;ConnectRetryCount=0;Trusted_Connection=True;MultipleActiveResultSets=true"
+
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information",
+      "Hangfire": "Information"
+    }
+  }
+}
